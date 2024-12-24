@@ -35,6 +35,9 @@ function renderCart() {
     li.innerHTML = `${product.name} - $${product.price} <button class="remove-from-cart-btn" data-id="${product.id}">Remove</button>`;
     cartList.appendChild(li);
   });
+
+  // Save the cart state to sessionStorage whenever it's rendered
+  sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 
 // Add item to cart
@@ -44,12 +47,7 @@ function addToCart(productId) {
   // Ensure the product exists and is not already in the cart
   if (product && !cart.some((p) => p.id === productId)) {
     cart.push(product);  // Add product to cart
-
-    // Save the updated cart to sessionStorage immediately
-    sessionStorage.setItem("cart", JSON.stringify(cart));
-
-    // Re-render the cart UI
-    renderCart();
+    renderCart();        // Re-render the cart and save to sessionStorage
   }
 }
 
@@ -57,21 +55,14 @@ function addToCart(productId) {
 function removeFromCart(productId) {
   // Remove the product from the cart array
   cart = cart.filter((product) => product.id !== productId);
-
-  // Save the updated cart to sessionStorage
-  sessionStorage.setItem("cart", JSON.stringify(cart));
-
-  // Re-render the cart
-  renderCart();
+  renderCart();  // Re-render the cart and save to sessionStorage
 }
 
 // Clear the cart
 function clearCart() {
   cart = [];  // Reset cart array
-  sessionStorage.removeItem("cart");  // Remove cart from sessionStorage
-
-  // Re-render the cart (which will be empty)
-  renderCart();
+  sessionStorage.removeItem('cart');  // Remove cart from sessionStorage
+  renderCart();  // Re-render the cart (which will be empty)
 }
 
 // Event listeners for "Add to Cart" buttons

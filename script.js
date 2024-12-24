@@ -12,7 +12,7 @@ const productList = document.getElementById("product-list");
 const cartList = document.getElementById("cart-list");
 const clearCartBtn = document.getElementById("clear-cart-btn");
 
-// Initialize cart array (from sessionStorage if available)
+// Load cart from sessionStorage (if available)
 let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
 // Render product list
@@ -36,7 +36,7 @@ function renderCart() {
     cartList.appendChild(li);
   });
 
-  // Save the cart state to sessionStorage whenever it's rendered
+  // Update sessionStorage with the current cart state
   sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 

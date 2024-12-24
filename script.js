@@ -44,7 +44,7 @@ function addToCart(productId) {
   if (product && !cart.some((p) => p.id === productId)) {
     cart.push(product);  // Add product to cart
 
-    // Save the updated cart to sessionStorage
+    // Save the updated cart to sessionStorage immediately
     sessionStorage.setItem("cart", JSON.stringify(cart));
 
     // Re-render the cart

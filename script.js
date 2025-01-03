@@ -37,7 +37,8 @@ function renderCart() {
   });
 
   // Update sessionStorage with the current cart state
-  sessionStorage.setItem('cart', JSON.stringify(cart));
+  console.log("Updating sessionStorage with cart:", cart); // Debugging log
+  sessionStorage.setItem('cart', JSON.stringify(cart));  // Update sessionStorage
 }
 
 // Add item to cart

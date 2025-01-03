@@ -61,7 +61,6 @@ const products = [
   
   function clearCart() {
     cart = []; 
-	productList.innerHTML="";
     sessionStorage.removeItem('cart'); 
     renderCart();  
   }
